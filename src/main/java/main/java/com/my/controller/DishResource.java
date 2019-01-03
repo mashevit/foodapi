@@ -59,13 +59,13 @@ public class DishResource {
 	}
 	
 	@PostMapping("/dishes")
-	public ResponseEntity<Object> createStudent(@RequestBody Dish student) {
+	public Dish createStudent(@RequestBody Dish student) {
 		Dish savedStudent = dishRepository.save(student);
+//
+//		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+//				.buildAndExpand(savedStudent.getIddish()).toUri();
 
-		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
-				.buildAndExpand(savedStudent.getIddish()).toUri();
-
-		return ResponseEntity.created(location).build();
+		return savedStudent;//ResponseEntity.created(location).build();
 
 	}
 	
@@ -79,18 +79,18 @@ public class DishResource {
 	}
 	
 	@PutMapping("/dishes/{id}")
-	public ResponseEntity<Object> updateStudent(@RequestBody Dish student, @PathVariable int id) {
+	public Dish updateStudent(@RequestBody Dish student, @PathVariable int id) {
 
 		Optional<Dish> studentOptional = dishRepository.findById(id);
 
 		if (!studentOptional.isPresent())
-			return ResponseEntity.notFound().build();
+			return null;//ResponseEntity.notFound().build();
 
 		student.setIddish(id);
 		
-		dishRepository.save(student);
+		Dish saved=dishRepository.save(student);
 
-		return ResponseEntity.noContent().build();
+		return saved;//ResponseEntity.noContent().build();
 	}
 	
 	@GetMapping("/dishes/{id}/ingreds")
