@@ -15,5 +15,6 @@ public interface IngrenameRepository extends JpaRepository<Ingrename, Integer>{
 	List<Ingrename> findByIndishsDishIddish(int id );
 	
     List<Ingrename> findByingrnameContainingIgnoreCase(String name);
+    List<Ingrename> findByingrname(String name);
 
 }

@@ -14,7 +14,7 @@ public interface DishRepository extends JpaRepository<Dish, Integer>{
    //List<Dish> findBydishNameIgnoreCase(String name);
 
 	List<Dish> findBydishnameIgnoreCase(String name);
-	
+	Dish findBydishname(String name);
     List<Dish> findBydishnameContainingIgnoreCase(String name);
     
     List<Dish> findByindishsIngrenameIdingrenamesIn(int id);
