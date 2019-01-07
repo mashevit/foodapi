@@ -215,7 +215,15 @@ public class DishResource {
 			System.out.println(here);
 			if (here.size()>0) {
 				if ( !tocomp.stream().filter(o -> o.getIngrname().equals(a)).findFirst().isPresent())
-					newlist.add(here.get(0));
+				{	newlist.add(here.get(0));
+				
+					Indish ind = new Indish();
+					ind.setDish(dish);
+					ind.setIngrename(here.get(0));
+					indishRepository.save(ind);
+					
+					
+				}
 			} else {
 				Ingrename newi = new Ingrename();
 				newi.setIngrname(a);
